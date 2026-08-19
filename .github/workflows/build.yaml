@@ -18,11 +18,11 @@ jobs:
         run: |
           mkdir -p cosmocc
           cd cosmocc
-          wget https://cosmo.zip/pub/cosmocc/cosmocc.zip
+          wget -q https://cosmo.zip/pub/cosmocc/cosmocc.zip
           unzip cosmocc.zip
           
           # Add cosmocc to PATH so it can be called directly
-          echo "$PWD/bin" >> $GITHUB_PATH
+          echo "$PWD/cosmocc/bin" >> $GITHUB_PATH
           
           cd ..
           
