@@ -23,9 +23,14 @@ jobs:
           ls -lah
           
           # Add cosmocc to PATH so it can be called directly
-          echo "$PWD" >> $GITHUB_PATH
+          echo "$PWD/bin/" >> $GITHUB_PATH
           
           cd ..
+          ls -lah
+          echo "checking bin"
+          ls -lah cosmocc/bin/
+          echo "checking cosmoscc"
+          ls -lah cosmocc/
           
           # Compile hello.c using cosmocc
           # (Assumes hello.c is in the root of your repository)
