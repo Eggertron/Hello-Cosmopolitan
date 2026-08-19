@@ -1,4 +1,35 @@
-mkdir -p cosmocc
-cd cosmocc
-wget https://cosmo.zip/pub/cosmocc/cosmocc.zip
-unzip cosmocc.zip
+name: CI/CD with Cosmocc
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup and run Cosmocc
+        run: |
+          mkdir -p cosmocc
+          cd cosmocc
+          wget https://cosmo.zip/pub/cosmocc/cosmocc.zip
+          unzip cosmocc.zip
+          
+          # Add cosmocc to PATH so it can be called directly
+          echo "$PWD/bin" >> $GITHUB_PATH
+          
+          cd ..
+          
+          # Compile hello.c using cosmocc
+          # (Assumes hello.c is in the root of your repository)
+          cosmocc -o hello hello.c
+          
+          # Run the compiled binary
+          ./hello
+          
