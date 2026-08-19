@@ -20,21 +20,16 @@ jobs:
           cd cosmocc
           wget -q https://cosmo.zip/pub/cosmocc/cosmocc.zip
           unzip -q cosmocc.zip
-          ls -lah
           
           # Add cosmocc to PATH so it can be called directly
           echo "$PWD/bin/" >> $GITHUB_PATH
           
           cd ..
-          ls -lah
-          echo "checking bin"
-          ls -lah cosmocc/bin/
-          echo "checking cosmoscc"
-          ls -lah cosmocc/
+
           
           # Compile hello.c using cosmocc
           # (Assumes hello.c is in the root of your repository)
-          cosmocc -o hello hello.c
+          ./cosmocc/bin/cosmocc -o hello hello.c
           
           # Run the compiled binary
           ./hello
