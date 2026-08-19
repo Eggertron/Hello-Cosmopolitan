@@ -33,4 +33,9 @@ jobs:
           
           # Run the compiled binary
           ./hello
-          
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello-binary
+          path: hello
